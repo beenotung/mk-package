@@ -32,7 +32,9 @@ if (distFiles.includes('index.d.ts')) {
 } else {
   delete json.types;
 }
-delete json.prepublishOnly;
+if (json.scripts) {
+  delete json.scripts.prepublishOnly;
+}
 let distPackageFile = path.join(distDir, 'package.json');
 fs.writeFileSync(distPackageFile, JSON.stringify(json, null, 2));
 console.log('saved to', distPackageFile);
