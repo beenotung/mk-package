@@ -1,6 +1,6 @@
 {
   "name": "mk-package",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "copy package.json into dist directory for npm publish",
   "main": "mk-package",
   "bin": "mk-package",
