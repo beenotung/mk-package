@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+let distDirname = process.argv[2] || 'dist';
+
+// load packages
+let path = require('path');
+let fs = require('fs');
+
+// find package.json
+let packageDir = '.';
+for (; ;) {
+  let files = fs.readdirSync(packageDir);
+  if (files.includes('package.json')) {
+    break;
+  }
+  packageDir = path.join(packageDir, '..');
+}
+let distDir = path.join(packageDir, distDirname);
+let distFiles = fs.readdirSync(distDir);
+let packageFile = path.join(packageDir, 'package.json');
+console.log('reading', packageFile);
+let json = JSON.parse(fs.readFileSync(packageFile));
+if (distFiles.includes('index.js')) {
+  console.log('set main as index.js');
+  json.main = 'index.js';
+} else {
+  delete json.main;
+}
+if (distFiles.includes('index.d.ts')) {
+  console.log('set types as index.d.ts');
+  json.types = 'index.d.ts';
+} else {
+  delete json.types;
+}
+let distPackageFile = path.join(distDir, 'package.json');
+fs.writeFileSync(distPackageFile, JSON.stringify(json, null, 2));
+console.log('saved to', distPackageFile);

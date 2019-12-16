@@ -1,0 +1,26 @@
+{
+  "name": "mk-package",
+  "version": "0.1.0",
+  "description": "copy package.json into dist directory for npm publish",
+  "main": "mk-package",
+  "bin": "mk-package",
+  "scripts": {
+    "test": "mkdir -p dist && node mk-package"
+  },
+  "keywords": [
+    "cli",
+    "package.json",
+    "dist",
+    "types"
+  ],
+  "author": "Beeno Tung <https://beeno-tung.surge.sh>",
+  "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/mk-package.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/mk-package/issues"
+  },
+  "homepage": "https://github.com/beenotung/mk-package#readme"
+}
