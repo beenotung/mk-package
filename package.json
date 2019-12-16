@@ -4,6 +4,9 @@
   "description": "copy package.json into dist directory for npm publish",
   "main": "mk-package",
   "bin": "mk-package",
+  "files": [
+    "mk-package"
+  ],
   "scripts": {
     "test": "mkdir -p dist && node mk-package"
   },
