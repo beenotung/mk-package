@@ -38,3 +38,14 @@ if (json.scripts) {
 let distPackageFile = path.join(distDir, 'package.json');
 fs.writeFileSync(distPackageFile, JSON.stringify(json, null, 2));
 console.log('saved to', distPackageFile);
+for (let packageFile of fs.readdirSync(packageDir)) {
+  for (let file of ['README.md', 'LICENSE']) {
+    if (packageFile.toLowerCase() === file.toLowerCase()) {
+      fs.copyFileSync(
+        path.join(packageDir, file),
+        path.join(distDir, file),
+      );
+      console.log('copied', file);
+    }
+  }
+}
