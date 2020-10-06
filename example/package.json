@@ -1,0 +1,18 @@
+{
+  "name": "mk-package-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run build && cd dist && npm pack",
+    "build": "tsc",
+    "postbuild": "mk-package",
+    "publish": "npm run build && cd dist && npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "mk-package": "file:..",
+    "typescript": "*"
+  }
+}

@@ -8,7 +8,8 @@
     "mk-package"
   ],
   "scripts": {
-    "test": "mkdir -p dist && node mk-package"
+    "pretest": "pnpm i -r",
+    "test": "cd example && npm test"
   },
   "keywords": [
     "cli",
