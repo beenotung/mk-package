@@ -32,7 +32,7 @@ You can use mk-package is the `postbuild` hook, then run `npm publish` inside th
     "publish": "npm run build && cd dist && npm publish"
   },
   "devDependencies": {
-    "mk-package": "^0.2.0"
+    "mk-package": "^1.0.0"
   }
 }
 ```
