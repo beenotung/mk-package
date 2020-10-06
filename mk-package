@@ -18,26 +18,33 @@ for (; ;) {
 let distDir = path.join(packageDir, distDirname);
 let distFiles = fs.readdirSync(distDir);
 let packageFile = path.join(packageDir, 'package.json');
+
 console.log('reading', packageFile);
 let json = JSON.parse(fs.readFileSync(packageFile));
+
 if (distFiles.includes('index.js')) {
   console.log('set main as index.js');
   json.main = 'index.js';
 } else {
   delete json.main;
 }
+
 if (distFiles.includes('index.d.ts')) {
   console.log('set types as index.d.ts');
   json.types = 'index.d.ts';
 } else {
   delete json.types;
 }
-if (json.scripts) {
+
+if (json.scripts && json.scripts.prepublishOnly) {
+  console.log('remove prepublishOnly script')
   delete json.scripts.prepublishOnly;
 }
+
 let distPackageFile = path.join(distDir, 'package.json');
 fs.writeFileSync(distPackageFile, JSON.stringify(json, null, 2));
 console.log('saved to', distPackageFile);
+
 for (let packageFile of fs.readdirSync(packageDir)) {
   for (let file of ['README.md', 'LICENSE']) {
     if (packageFile.toLowerCase() === file.toLowerCase()) {
