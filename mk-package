@@ -20,11 +20,12 @@ for (; ;) {
   packageDir = path.join(packageDir, '..');
 }
 let distDir = path.join(packageDir, distDirname);
+let distPackageFile = path.join(distDir, 'package.json');
 let distFiles = fs.readdirSync(distDir);
 let packageFile = path.join(packageDir, 'package.json');
 
 if (!verbose) {
-  console.log('mk-package from', packageFile);
+  console.log('mk-package from', packageFile, 'to', distPackageFile);
   console.log = function () {
     // noop
   };
@@ -65,7 +66,6 @@ for (let key of keysToRemove) {
   }
 }
 
-let distPackageFile = path.join(distDir, 'package.json');
 fs.writeFileSync(distPackageFile, JSON.stringify(json, null, 2));
 console.log('saved to', distPackageFile);
 
