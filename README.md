@@ -21,14 +21,13 @@ import { aFunc } from 'a-lib/dist/aModule'
 
 ## Setup Example
 
-You can use mk-package in the `postbuild` hook, then run `npm publish` inside the `dist` directory
+You can use mk-package in last step of build pipeline or in the `postbuild` hook, then run `npm publish` inside the `dist` directory
 
 **package.json**:
 ```json
 {
   "scripts": {
-    "build": "tsc",
-    "postbuild": "mk-package",
+    "build": "tsc && mk-package",
     "publish": "npm run build && cd dist && npm publish"
   },
   "devDependencies": {

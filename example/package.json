@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "test": "npm run build && cd dist && npm pack",
-    "build": "tsc",
-    "postbuild": "mk-package",
+    "build": "tsc && mk-package",
     "publish": "npm run build && cd dist && npm publish"
   },
   "files": [
