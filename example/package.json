@@ -13,6 +13,6 @@
   ],
   "devDependencies": {
     "mk-package": "file:..",
-    "typescript": "*"
+    "typescript": "^5.1.6"
   }
 }
