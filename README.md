@@ -11,17 +11,17 @@ Otherwise, the fields will be left blank.
 
 ## Example library with moved package.json
 ```
-import { aFunc } from 'alib/aModule'
+import { aFunc } from 'a-lib/aModule'
 ```
 
 ## Example library without moved package.json
 ```
-import { aFunc } from 'alib/dist/aModule'
+import { aFunc } from 'a-lib/dist/aModule'
 ```
 
 ## Setup Example
 
-You can use mk-package is the `postbuild` hook, then run `npm publish` inside the `dist` directory
+You can use mk-package in the `postbuild` hook, then run `npm publish` inside the `dist` directory
 
 **package.json**:
 ```json
